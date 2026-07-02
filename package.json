@@ -28,6 +28,10 @@
   "publishConfig": {
     "access": "public"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/banshee/iso7813Parser.git"
+  },
   "keywords": [
     "magstripe",
     "magnetic-stripe",
