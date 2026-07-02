@@ -23,7 +23,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "prepublishOnly": "pnpm test && pnpm build",
-    "parse": "node dist/cli.js"
+    "parse": "node dist/cli.js",
+    "release": "pnpm publish --registry https://registry.npmjs.org --access public"
   },
   "publishConfig": {
     "access": "public"
