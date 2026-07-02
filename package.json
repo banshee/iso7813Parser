@@ -1,0 +1,44 @@
+{
+  "name": "magstripe-parser",
+  "version": "1.0.0",
+  "description": "ISO/IEC 7813 magnetic stripe card data parser using Chevrotain",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": [
+    "magstripe",
+    "magnetic-stripe",
+    "iso-7813",
+    "iso7813",
+    "chevrotain",
+    "parser",
+    "track1",
+    "track2",
+    "credit-card",
+    "payment"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "chevrotain": "^11.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  }
+}
