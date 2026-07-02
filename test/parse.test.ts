@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { parse } from "../src/index.js";
+import { parse, parseSwipe, splitTracks } from "../src/index.js";
 
 describe("parse() — auto-detect", () => {
   it("auto-detects Track 1 from % prefix", () => {
@@ -59,3 +59,34 @@ describe("parse() — auto-detect", () => {
     });
   });
 });
+
+describe("splitTracks()", () => {
+  it("splits a combined track 1 and track 2 swipe", () => {
+    const input = "%B5113320854537821^07675051298$20000$^3312121000000000000000624000000?;5113320854537821=331212100000624000?";
+    const segments = splitTracks(input);
+    expect(segments).toEqual([
+      "%B5113320854537821^07675051298$20000$^3312121000000000000000624000000?",
+      ";5113320854537821=331212100000624000?"
+    ]);
+  });
+});
+
+describe("parseSwipe()", () => {
+  it("parses combined track 1 and track 2 swipe successfully", () => {
+    const input = "%B5113320854537821^07675051298$20000$^3312121000000000000000624000000?;5113320854537821=331212100000624000?";
+    const swipe = parseSwipe(input);
+
+    expect(swipe.track1).toBeDefined();
+    expect(swipe.track1!.lexErrors).toHaveLength(0);
+    expect(swipe.track1!.parseErrors).toHaveLength(0);
+    expect(swipe.track1!.data).toBeDefined();
+    expect(swipe.track1!.data!.pan).toBe("5113320854537821");
+
+    expect(swipe.track2).toBeDefined();
+    expect(swipe.track2!.lexErrors).toHaveLength(0);
+    expect(swipe.track2!.parseErrors).toHaveLength(0);
+    expect(swipe.track2!.data).toBeDefined();
+    expect(swipe.track2!.data!.pan).toBe("5113320854537821");
+  });
+});
+

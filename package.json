@@ -11,6 +11,9 @@
       "types": "./dist/index.d.ts"
     }
   },
+  "bin": {
+    "iso7813": "dist/cli.js"
+  },
   "files": [
     "dist",
     "src"
@@ -19,7 +22,8 @@
     "build": "tsc",
     "test": "vitest run",
     "test:watch": "vitest",
-    "prepublishOnly": "pnpm test && pnpm build"
+    "prepublishOnly": "pnpm test && pnpm build",
+    "parse": "node dist/cli.js"
   },
   "publishConfig": {
     "access": "public"

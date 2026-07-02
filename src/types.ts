@@ -82,3 +82,15 @@ export interface ParseResult<T> {
   /** Parsing errors (unexpected tokens, missing fields, etc.) */
   parseErrors: IRecognitionException[];
 }
+
+/**
+ * Result of parsing a full card swipe that may contain multiple tracks
+ * concatenated together (e.g. `%...?;...?`), as output by most card readers.
+ */
+export interface SwipeResult {
+  /** Track 1 result, if Track 1 data was present */
+  track1?: ParseResult<Track1Data>;
+  /** Track 2 result, if Track 2 data was present */
+  track2?: ParseResult<Track2Data>;
+}
+
